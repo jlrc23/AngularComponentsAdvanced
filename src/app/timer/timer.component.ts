@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import {TimerService} from './timer.service';
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-timer',
@@ -11,14 +12,20 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   @Output() onComplete = new EventEmitter<void>();
   @Input() init:number = 20;
+  private countdownEndSubscription:Subscription = null;
 
   constructor(public timer:TimerService) { }
 
   ngOnInit(): void {
     this.timer.restartCountdown(this.init);
+    this.countdownEndSubscription = this.timer.countdownEnd$.subscribe(()=>{
+      console.log("--countdown end");
+      this.onComplete.emit();
+    });
   }
   ngOnDestroy() {
     this.timer.destroy();
+    this.countdownEndSubscription.unsubscribe();
   }
 
   

@@ -10,6 +10,7 @@ import { TimerComponent } from './timer/timer.component';
 import { AlertViewComponent } from './alert-view/alert-view.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
+//import { TimerService } from './timer/timer.service';
 
 
 
@@ -28,7 +29,7 @@ import { TabComponent } from './tab/tab.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [], //TimerService
   bootstrap: [AppComponent]
 })
 export class AppModule { }
