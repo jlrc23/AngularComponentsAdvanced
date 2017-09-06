@@ -12,9 +12,7 @@ export class TimerService{
   public countdownEnd$ = this.countdownEndSource.asObservable();
   public countdown$ = this.countdownSource.asObservable();
   
-
   constructor(){}
-  
   destroy():void{
     this.clearTimeout();
   }
