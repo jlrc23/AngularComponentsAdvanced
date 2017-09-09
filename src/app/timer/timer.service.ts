@@ -45,8 +45,6 @@ export class TimerService{
   private processCountdown(){
     if(this.countdownSource.getValue() == 0){
       this.countdownEndSource.next();
-      //this.onComplete.emit();
-      //console.log("--countdown end--");
     }
     else{
       this.doCountdown();
