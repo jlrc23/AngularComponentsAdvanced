@@ -1,26 +1,34 @@
 <div>
-  <h1>Timers</h1>
-  <app-timer *ngFor="let timer of timers" init="{{timer}}" (onComplete)="showEndTimerAlert()"></app-timer>
-  
-  
-  <button class="add" (click)="showAddTimer()">+</button>
 
-  <app-alert-view [hidden]="!isAddTimerVisible"
-   (onCancel)="hideAddTimer()"
-    (onSubmit)="hideAddTimer()">
-      <div header>Add new timer</div>
 
-      <label>Set the number of seconds for your timer</label>
-      <input [(ngModel)]="time" type="number">
-      
-      <button (click)="hideAddTimer()" class="cancel-button">Cancel</button>
-      <button (click)="submitAddTimer()">Ok</button>
+    <app-tabs>
+        <app-tab title="Timers">
+            <app-timer *ngFor="let timer of timers" init="{{timer}}" (onComplete)="showEndTimerAlert()"></app-timer>
 
-  </app-alert-view>
+            <button class="add" (click)="showAddTimer()">+</button>
 
-    <app-alert-view [hidden]="!isEndTimerAlertVisible">
-      <div header>Timer ended</div>
-      <div>Your countdown has finished</div>
-      <button (click)="hideEndTimerAlert()">Ok</button>
-  </app-alert-view>
+            <app-alert-view [hidden]="!isAddTimerVisible" (onCancel)="hideAddTimer()" (onSubmit)="hideAddTimer()">
+                <div header>Add new timer</div>
+                <label>Set the number of seconds for your timer</label>
+                <input [(ngModel)]="time" type="number">
+                <button (click)="hideAddTimer()" class="cancel-button">Cancel</button>
+                <button (click)="submitAddTimer()">Ok</button>
+            </app-alert-view>
+
+            <app-alert-view [hidden]="!isEndTimerAlertVisible">
+                <div header>Timer ended</div>
+                <div>Your countdown has finished</div>
+                <button (click)="hideEndTimerAlert()">Ok</button>
+            </app-alert-view>
+
+        </app-tab>
+        <app-tab title="Crono">
+            Cronos. Not Available
+        </app-tab>
+        <app-tab title="Alarm">
+            Alarm. Not avaialable
+        </app-tab>
+    </app-tabs>
+
+
 </div>
